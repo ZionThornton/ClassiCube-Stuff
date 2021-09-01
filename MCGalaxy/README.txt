@@ -1,1 +1,0 @@
-MCGalaxy commands/plugins
