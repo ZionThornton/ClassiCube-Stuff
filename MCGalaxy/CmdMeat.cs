@@ -101,13 +101,13 @@ namespace MCGalaxy.Commands.Chatting
 					p.SetMoney(p.money + 1);
 				}
 				if(message != "who") {
-					TryMessage(p,  dailymeat[blahblahblah], true);
+					Chat.MessageGlobal(p,  dailymeat[blahblahblah], true);
 					whodoneit = p.ColoredName;
 					
 				}
 				if(message == "who") p.Message(whodoneit);
 				
-					/*
+					/* old system. very inefficient.
 					if (number == 1){
 						string msg = "&a[The Daily Meat]&m " +  people[person] + "&f has been eaten by &m" + people[person2]  + "&f!";
 						TryMessage(p, msg);
