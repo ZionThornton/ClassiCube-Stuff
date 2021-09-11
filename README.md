@@ -1,2 +1,2 @@
 # ClassiCube-Stuff
-A repository for ClassiCube things
+A repository for ClassiCube things.
