@@ -61,12 +61,12 @@ namespace MCGalaxy.Commands.Info
                 PlayerData target = PlayerDB.Match(p, args[0]);
                 if (target == null) return;
 				Group group = Group.GroupIn(target.Name);
-				p.Message("&m-[ &f{0}&m(offline) ]-", (string)target.Name.Replace('+', ' '));
-				p.Message("&f· &bHas &6{0} &b{1}", target.Money.ToString(), Server.Config.Currency);
-				p.Message("&f· &bHas the rank of &g{0}", group.Name);
-				p.Message("&f· &bHas logged in &a{0} &btimes", target.Logins);
-				p.Message("&f· &bFirst login: &]{0}", target.FirstLogin.ToString("yyyy-MM-dd"));
-				p.Message("&f· &bHas spent &d{0} &bon the server", target.TotalTime.ToString().Replace(".", "d ").Replace(":", "h ").TrimEnd('h', ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9') + "m");
+				p.Message("%f-[ %f{0}%f(%7offline%f) ]-", (string)target.Name.Replace('+', ' '));
+				p.Message("%f· %bHas %6{0} %b{1}", target.Money.ToString(), Server.Config.Currency);
+				p.Message("%f· %bHas the rank of %7{0}", group.Name);
+				p.Message("%f· %bHas logged in %a{0} &btimes", target.Logins);
+				p.Message("%f· %bFirst login: &]{0}", target.FirstLogin.ToString("yyyy-MM-dd"));
+				p.Message("%f· %bHas spent %d{0} %fon the server", target.TotalTime.ToString().Replace(".", "d ").Replace(":", "h ").TrimEnd('h', ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9') + "m");
 				
 				
 			}
@@ -74,31 +74,31 @@ namespace MCGalaxy.Commands.Info
 				
 				
 				
-				p.Message("&m-[ {0} &m(&7{1}&m) ]-", who.ColoredName, who.name);
-				p.Message("&f· &bHas &6{0} &b{1}", who.money, Server.Config.Currency);
-				p.Message("&f· &bHas the rank of &g{0}", who.Rank);
+				p.Message("%f-[ {0} %f(%7{1}%f) ]-", who.ColoredName, who.name);
+				p.Message("%f· &bHas %6{0} %f{1}", who.money, Server.Config.Currency);
+				p.Message("%f· &bHas the rank of %f{0}", who.Rank);
 				
-				p.Message("&f· &bHas logged in &a{0} &btimes", who.TimesVisited);
+				p.Message("%f· &bHas logged in %a{0} &btimes", who.TimesVisited);
 				
 				
 				TimeSpan timeOnline = DateTime.UtcNow - who.SessionStartTime;
 				
-				p.Message("&f· &bFirst login: &]{0}", who.FirstLogin.ToString("yyyy-MM-dd"));
+				p.Message("%f· &bFirst login: &f]{0}", who.FirstLogin.ToString("yyyy-MM-dd"));
 				
-				p.Message("&f· &bHas spent &d{0} &bon the server, &d{1} &bthis session", who.TotalTime.Shorten(), timeOnline.Shorten());
+				p.Message("%f· %bHas spent %d{0} &bon the server, &d{1} &bthis session", who.TotalTime.Shorten(), timeOnline.Shorten());
 				//p.Message("&f· &b");
 				
 				
 				
 				TimeSpan idleTime = DateTime.UtcNow - who.LastAction;
-				if (who.afkMessage != null) { p.Message("&f· &bIdle for {0} (AFK {1}&b)", idleTime.Shorten(), who.afkMessage); }
-				else if (idleTime.TotalMinutes >= 1) { p.Message("&f· &bIdle for {0}", idleTime.Shorten()); }
+				if (who.afkMessage != null) { p.Message("&f· &bIdle for {0} (AFK {1}%b)", idleTime.Shorten(), who.afkMessage); }
+				else if (idleTime.TotalMinutes >= 1) { p.Message("%f· %bIdle for {0}", idleTime.Shorten()); }
 				
 				
 				bool hasSkin = !who.SkinName.CaselessEq(who.truename);
 				bool hasModel = !(who.Model.CaselessEq("humanoid") || who.Model.CaselessEq("human"));
-				if (hasSkin) { p.Message("&f· &bHas the skin of &q{0}", who.SkinName); }
-				if (hasModel) { p.Message("&f· &bHas the model of &q{0}", who.Model); }
+				if (hasSkin) { p.Message("%f· %bHas the skin of &f{0}", who.SkinName); }
+				if (hasModel) { p.Message("%f· %bHas the model of %f{0}", who.Model); }
 				
 			
 			}
